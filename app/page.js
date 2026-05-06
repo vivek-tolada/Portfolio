@@ -305,8 +305,8 @@ export default function Home() {
         <p className="contact-sub fade-up">Open to full-time roles, internships, and collaborative AI/ML projects. Currently based in Visakhapatnam, India.</p>
         <div className="contact-links fade-up">
           <a className="contact-link" href="mailto:vivektolada@gmail.com">✉ vivektolada@gmail.com</a>
-          <a className="contact-link" href="https://www.linkedin.com/in/vivektolada" target="_blank" rel="noopener noreferrer">↗ LinkedIn</a>
-          <a className="contact-link" href="https://github.com/vivektolada" target="_blank" rel="noopener noreferrer">↗ GitHub</a>
+          <a className="contact-link" href="https://www.linkedin.com/in/vivek-tolada-b52b25287/" target="_blank" rel="noopener noreferrer">↗ LinkedIn</a>
+          <a className="contact-link" href="https://github.com/vivek-tolada" target="_blank" rel="noopener noreferrer">↗ GitHub</a>
           <a className="contact-link" href="tel:7995135452">📞 +91 7995135452</a>
         </div>
       </div>
