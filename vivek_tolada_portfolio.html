@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vivek Tolada — AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050A0F;
+  --bg1:#0A1220;
+  --bg2:#0D1A2D;
+  --bg3:#112240;
+  --acc:#00FFB3;
+  --acc2:#0FA8FF;
+  --acc3:#7B5EA7;
+  --txt:#E8F0FF;
+  --txt2:#8A9BB8;
+  --txt3:#4A5A72;
+  --border:#1A2D4A;
+  --card:#0A1828;
+  --glow:rgba(0,255,179,0.12);
+  --glow2:rgba(15,168,255,0.10);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* Grid noise bg */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,255,179,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,179,0.025) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  padding:1rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:rgba(5,10,15,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:1.1rem;
+  color:var(--acc);
+  letter-spacing:-0.02em;
+}
+.nav-links{
+  display:flex;
+  gap:2rem;
+  list-style:none;
+}
+.nav-links a{
+  color:var(--txt2);
+  text-decoration:none;
+  font-family:'DM Mono',monospace;
+  font-size:0.78rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--acc)}
+
+/* SECTIONS */
+section{
+  position:relative;
+  z-index:1;
+  padding:7rem 2rem;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-top:8rem;
+  max-width:1100px;
+  margin:0 auto;
+  padding-left:2rem;
+  padding-right:2rem;
+}
+.hero-tag{
+  font-family:'DM Mono',monospace;
+  font-size:0.75rem;
+  letter-spacing:0.15em;
+  color:var(--acc);
+  text-transform:uppercase;
+  margin-bottom:1.5rem;
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+}
+.hero-tag::before{
+  content:'';
+  display:block;
+  width:32px;height:1px;
+  background:var(--acc);
+}
+.hero-name{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(3rem,8vw,6.5rem);
+  font-weight:800;
+  line-height:0.95;
+  letter-spacing:-0.04em;
+  margin-bottom:0.5rem;
+}
+.hero-name .line1{color:var(--txt)}
+.hero-name .line2{
+  color:transparent;
+  -webkit-text-stroke:1px var(--acc);
+  text-stroke:1px var(--acc);
+}
+.hero-desc{
+  max-width:520px;
+  color:var(--txt2);
+  font-size:1.05rem;
+  line-height:1.75;
+  margin:2rem 0 3rem;
+}
+.hero-ctas{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.btn-primary{
+  padding:0.85rem 2rem;
+  background:var(--acc);
+  color:#050A0F;
+  font-family:'Syne',sans-serif;
+  font-weight:700;
+  font-size:0.9rem;
+  text-decoration:none;
+  letter-spacing:0.03em;
+  border:none;
+  cursor:pointer;
+  transition:all 0.2s;
+  clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-primary:hover{background:#00e6a0;transform:translateY(-2px)}
+.btn-secondary{
+  padding:0.85rem 2rem;
+  background:transparent;
+  color:var(--acc2);
+  font-family:'Syne',sans-serif;
+  font-weight:600;
+  font-size:0.9rem;
+  text-decoration:none;
+  border:1px solid var(--acc2);
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.btn-secondary:hover{background:rgba(15,168,255,0.08);transform:translateY(-2px)}
+
+.hero-stats{
+  display:flex;
+  gap:3rem;
+  margin-top:4rem;
+  padding-top:3rem;
+  border-top:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.stat-item .num{
+  font-family:'Syne',sans-serif;
+  font-size:2rem;
+  font-weight:800;
+  color:var(--acc);
+}
+.stat-item .lbl{
+  font-size:0.78rem;
+  color:var(--txt3);
+  font-family:'DM Mono',monospace;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+
+/* SECTION HEADERS */
+.section-header{
+  margin-bottom:4rem;
+}
+.section-tag{
+  font-family:'DM Mono',monospace;
+  font-size:0.72rem;
+  color:var(--acc2);
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+}
+.section-tag::before{
+  content:'';
+  display:block;
+  width:24px;height:1px;
+  background:var(--acc2);
+}
+.section-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:800;
+  letter-spacing:-0.03em;
+  line-height:1.1;
+}
+
+/* ABOUT */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:start;
+}
+.about-text p{
+  color:var(--txt2);
+  margin-bottom:1.2rem;
+  font-size:1rem;
+  line-height:1.8;
+}
+.about-text strong{color:var(--acc)}
+.about-highlights{
+  display:grid;
+  gap:1rem;
+}
+.highlight-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:1.25rem 1.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:border-color 0.2s;
+}
+.highlight-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:3px;height:100%;
+  background:var(--acc);
+}
+.highlight-card:hover{border-color:var(--acc)}
+.highlight-card .h-num{
+  font-family:'Syne',sans-serif;
+  font-size:1.6rem;
+  font-weight:800;
+  color:var(--acc);
+  line-height:1;
+}
+.highlight-card .h-txt{
+  font-size:0.82rem;
+  color:var(--txt2);
+  margin-top:0.25rem;
+}
+
+/* PROJECTS */
+.projects-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+}
+.project-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:2rem;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.3s;
+  cursor:default;
+}
+.project-card::after{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:60px;height:60px;
+  background:radial-gradient(circle at top right, var(--glow), transparent 70%);
+  pointer-events:none;
+}
+.project-card:hover{
+  border-color:var(--acc);
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+.project-card.featured{
+  grid-column:span 2;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:2rem;
+  align-items:start;
+}
+.proj-tag{
+  display:inline-block;
+  font-family:'DM Mono',monospace;
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0.25rem 0.75rem;
+  margin-bottom:1rem;
+}
+.proj-tag.llm{background:rgba(0,255,179,0.1);color:var(--acc)}
+.proj-tag.cv{background:rgba(15,168,255,0.1);color:var(--acc2)}
+.proj-tag.agent{background:rgba(123,94,167,0.15);color:#a97fd4}
+.proj-tag.data{background:rgba(255,183,0,0.1);color:#FFB700}
+.proj-title{
+  font-family:'Syne',sans-serif;
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--txt);
+  margin-bottom:0.75rem;
+  letter-spacing:-0.02em;
+}
+.proj-desc{
+  color:var(--txt2);
+  font-size:0.9rem;
+  line-height:1.7;
+  margin-bottom:1.25rem;
+}
+.proj-metrics{
+  display:flex;
+  gap:1.5rem;
+  margin-bottom:1.25rem;
+  flex-wrap:wrap;
+}
+.metric{
+  display:flex;
+  flex-direction:column;
+}
+.metric .m-num{
+  font-family:'Syne',sans-serif;
+  font-weight:700;
+  font-size:1.1rem;
+  color:var(--acc);
+}
+.metric .m-lbl{
+  font-size:0.72rem;
+  color:var(--txt3);
+  font-family:'DM Mono',monospace;
+}
+.proj-stack{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+}
+.stack-tag{
+  font-family:'DM Mono',monospace;
+  font-size:0.7rem;
+  padding:0.2rem 0.6rem;
+  border:1px solid var(--border);
+  color:var(--txt3);
+  border-radius:2px;
+}
+.proj-link{
+  color:var(--acc2);
+  text-decoration:none;
+  font-size:0.8rem;
+  font-family:'DM Mono',monospace;
+  letter-spacing:0.05em;
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-top:1rem;
+  transition:color 0.2s;
+}
+.proj-link:hover{color:var(--acc)}
+
+/* EXPERIENCE */
+.exp-timeline{
+  position:relative;
+  padding-left:2rem;
+}
+.exp-timeline::before{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;left:0;
+  width:1px;
+  background:linear-gradient(to bottom, var(--acc) 0%, var(--acc2) 50%, transparent 100%);
+}
+.exp-item{
+  position:relative;
+  margin-bottom:3rem;
+  padding-left:2rem;
+}
+.exp-item::before{
+  content:'';
+  position:absolute;
+  left:-2rem;
+  top:0.4rem;
+  width:8px;height:8px;
+  background:var(--acc);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--acc);
+}
+.exp-period{
+  font-family:'DM Mono',monospace;
+  font-size:0.72rem;
+  color:var(--txt3);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+.exp-role{
+  font-family:'Syne',sans-serif;
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--txt);
+  margin-bottom:0.2rem;
+}
+.exp-company{
+  color:var(--acc2);
+  font-size:0.9rem;
+  margin-bottom:0.75rem;
+}
+.exp-desc{
+  color:var(--txt2);
+  font-size:0.9rem;
+  line-height:1.7;
+}
+
+/* SKILLS */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.skill-group{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:1.75rem;
+}
+.skill-group-label{
+  font-family:'DM Mono',monospace;
+  font-size:0.72rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--acc2);
+  margin-bottom:1.25rem;
+  padding-bottom:0.75rem;
+  border-bottom:1px solid var(--border);
+}
+.skill-list{
+  display:flex;
+  flex-direction:column;
+  gap:0.6rem;
+}
+.skill-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.skill-name{
+  font-size:0.88rem;
+  color:var(--txt2);
+}
+.skill-bar-wrap{
+  width:80px;
+  height:2px;
+  background:var(--border);
+  overflow:hidden;
+}
+.skill-bar{
+  height:100%;
+  background:var(--acc);
+}
+
+/* CERTS */
+.certs-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+}
+.cert-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:1.5rem;
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
+  transition:border-color 0.2s;
+}
+.cert-card:hover{border-color:var(--acc2)}
+.cert-icon{
+  width:36px;height:36px;
+  background:rgba(0,255,179,0.08);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-family:'DM Mono',monospace;
+  font-size:0.65rem;
+  color:var(--acc);
+  letter-spacing:0.05em;
+  border:1px solid rgba(0,255,179,0.2);
+}
+.cert-name{
+  font-weight:500;
+  font-size:0.9rem;
+  color:var(--txt);
+  margin-bottom:0.25rem;
+}
+.cert-issuer{
+  font-size:0.8rem;
+  color:var(--txt3);
+  font-family:'DM Mono',monospace;
+}
+
+/* CONTACT */
+#contact{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto;
+  padding:7rem 2rem;
+}
+.contact-big{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:800;
+  letter-spacing:-0.04em;
+  line-height:1.1;
+  margin-bottom:1.5rem;
+}
+.contact-big span{color:var(--acc)}
+.contact-sub{
+  color:var(--txt2);
+  margin-bottom:2.5rem;
+  font-size:1rem;
+}
+.contact-links{
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.contact-link{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  padding:0.75rem 1.5rem;
+  border:1px solid var(--border);
+  color:var(--txt2);
+  text-decoration:none;
+  font-family:'DM Mono',monospace;
+  font-size:0.8rem;
+  transition:all 0.2s;
+}
+.contact-link:hover{border-color:var(--acc);color:var(--acc)}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:2rem;
+  text-align:center;
+  color:var(--txt3);
+  font-family:'DM Mono',monospace;
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  position:relative;z-index:1;
+}
+
+/* DIVIDER */
+.divider{
+  width:100%;height:1px;
+  background:var(--border);
+  position:relative;z-index:1;
+}
+
+/* SCROLL ANIMATE */
+.fade-up{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.7s, transform 0.7s;
+}
+.fade-up.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:768px){
+  .about-grid,.projects-grid,.skills-grid,.certs-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-column:span 1;display:block}
+  .nav-links{display:none}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">VT.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-tag">AI / ML Engineer</div>
+  <div class="hero-name">
+    <div class="line1">Tolada Venkat</div>
+    <div class="line2">Sai Vivek</div>
+  </div>
+  <p class="hero-desc">
+    Building intelligent systems at the intersection of <strong style="color:var(--acc)">Large Language Models</strong>, autonomous agents, and real-world data pipelines. Currently completing B.Tech in AI &amp; Data Science at Chaitanya Engineering College, Visakhapatnam.
+  </p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#projects">View Projects</a>
+    <a class="btn-secondary" href="mailto:vivektolada@gmail.com">Hire Me →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="num">4+</div>
+      <div class="lbl">AI Projects Shipped</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">8.02</div>
+      <div class="lbl">CGPA</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">3</div>
+      <div class="lbl">Industry Internships</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">2026</div>
+      <div class="lbl">Graduating</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header fade-up">
+    <div class="section-tag">About Me</div>
+    <h2 class="section-title">Engineering AI that<br/>actually works.</h2>
+  </div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I'm a final-year <strong>AI & Data Science</strong> student with a focus on building production-ready intelligent systems — from autonomous learning agents to real-time computer vision pipelines.</p>
+      <p>My work spans the full ML stack: designing LLM-powered workflows, engineering prompt systems, integrating ML models into web APIs, and optimizing inference pipelines. I'm particularly drawn to <strong>explainable AI</strong> and systems that can reason transparently.</p>
+      <p>Beyond code, I've applied my skills in three real-world internships — gaining exposure to IT operations, ML fundamentals, and intelligent agent development through Infosys Springboard.</p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <div class="h-num">LLM</div>
+        <div class="h-txt">FastAPI + LLM integration for DevOps automation</div>
+      </div>
+      <div class="highlight-card">
+        <div class="h-num">CV</div>
+        <div class="h-txt">Real-time facial recognition with OpenCV & Python</div>
+      </div>
+      <div class="highlight-card">
+        <div class="h-num">XAI</div>
+        <div class="h-txt">Feynman-pedagogy explainable autonomous agents</div>
+      </div>
+      <div class="highlight-card">
+        <div class="h-num">8.02</div>
+        <div class="h-txt">CGPA — Chaitanya Engineering College, Vizag</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-up">
+    <div class="section-tag">Featured Work</div>
+    <h2 class="section-title">Projects that ship.</h2>
+  </div>
+  <div class="projects-grid">
+
+    <!-- Featured -->
+    <div class="project-card featured fade-up">
+      <div>
+        <span class="proj-tag agent">Autonomous Agent</span>
+        <h3 class="proj-title">Autonomous Learning Agent with Checkpoint Verification & Feynman Pedagogy</h3>
+        <p class="proj-desc">Engineered an AI agent capable of iterative self-teaching with structured validation gates. Integrated Feynman Pedagogy principles — forcing the model to explain concepts back in simple terms — to surface gaps in reasoning. Result: measurable gains in knowledge retention and reasoning transparency over baseline LLM responses.</p>
+        <div class="proj-metrics">
+          <div class="metric"><span class="m-num">~40%</span><span class="m-lbl">Retention Improvement</span></div>
+          <div class="metric"><span class="m-num">XAI</span><span class="m-lbl">Explainability Built-In</span></div>
+          <div class="metric"><span class="m-num">Infosys</span><span class="m-lbl">Springboard Project</span></div>
+        </div>
+        <div class="proj-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">LLM APIs</span>
+          <span class="stack-tag">Checkpoint Validation</span>
+          <span class="stack-tag">Explainable AI</span>
+          <span class="stack-tag">Feynman Method</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <span class="proj-tag llm">LLM · DevOps</span>
+      <h3 class="proj-title">LLM-Powered DevOps Assistant</h3>
+      <p class="proj-desc">Built a FastAPI backend serving an LLM assistant that automates CI/CD debugging, generates Dockerfiles, explains Kubernetes configs, and reviews pull requests — cutting repetitive DevOps toil by intelligently routing developer questions through prompt-engineered pipelines.</p>
+      <div class="proj-metrics">
+        <div class="metric"><span class="m-num">5+</span><span class="m-lbl">DevOps Workflows</span></div>
+        <div class="metric"><span class="m-num">FastAPI</span><span class="m-lbl">REST Backend</span></div>
+      </div>
+      <div class="proj-stack">
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">LLMs</span>
+        <span class="stack-tag">Prompt Engineering</span>
+        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">Kubernetes</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <span class="proj-tag cv">Computer Vision</span>
+      <h3 class="proj-title">Face Recognition Attendance System</h3>
+      <p class="proj-desc">Designed an end-to-end real-time attendance pipeline using Python and OpenCV. Handles face encoding, identity matching, and timestamp logging to a structured database — fully optimized for live webcam feeds with low-latency inference.</p>
+      <div class="proj-metrics">
+        <div class="metric"><span class="m-num">Real-Time</span><span class="m-lbl">Webcam Inference</span></div>
+        <div class="metric"><span class="m-num">Auto-Log</span><span class="m-lbl">DB Timestamping</span></div>
+      </div>
+      <div class="proj-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">OpenCV</span>
+        <span class="stack-tag">face_recognition</span>
+        <span class="stack-tag">SQLite</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <span class="proj-tag data">Data · Analytics</span>
+      <h3 class="proj-title">Strategic Product Placement Analysis</h3>
+      <p class="proj-desc">Built a data-driven framework for evaluating product placement effectiveness using pattern-based analytical models. Delivered actionable positioning recommendations by quantifying visibility metrics and correlating placement decisions with outcome signals.</p>
+      <div class="proj-metrics">
+        <div class="metric"><span class="m-num">Pattern ML</span><span class="m-lbl">Models Used</span></div>
+        <div class="metric"><span class="m-num">Data-First</span><span class="m-lbl">Decision Framework</span></div>
+      </div>
+      <div class="proj-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Pandas</span>
+        <span class="stack-tag">Scikit-learn</span>
+        <span class="stack-tag">Tableau</span>
+        <span class="stack-tag">Seaborn</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-up">
+    <div class="section-tag">Experience</div>
+    <h2 class="section-title">Where I've worked.</h2>
+  </div>
+  <div class="exp-timeline">
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">Sep 2025 — Jan 2026</div>
+      <div class="exp-role">AI / ML Intern</div>
+      <div class="exp-company">Infosys Springboard Virtual Internship 6.0</div>
+      <div class="exp-desc">Developed an Autonomous Learning Agent as the capstone project, applying explainable AI principles and intelligent agent design patterns. Gained deep exposure to autonomous system development, checkpoint verification architectures, and XAI-driven pedagogical frameworks.</div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">May 2025 — Jul 2025</div>
+      <div class="exp-role">IT & Systems Intern</div>
+      <div class="exp-company">CTC Tech Services</div>
+      <div class="exp-desc">Gained hands-on exposure to enterprise IT infrastructure, system troubleshooting workflows, and technical support operations in production environments. Collaborated with cross-functional teams on software deployments and incident resolution.</div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">May 2025 — Jul 2025</div>
+      <div class="exp-role">Data Science Intern</div>
+      <div class="exp-company">Edunutshell</div>
+      <div class="exp-desc">Applied Python programming for hands-on data analysis and ML project development. Built foundational ML pipelines covering preprocessing, feature engineering, model training, and evaluation — with a focus on practical project delivery.</div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-period">Oct 2022 — Jul 2026</div>
+      <div class="exp-role">B.Tech — AI & Data Science</div>
+      <div class="exp-company">Chaitanya Engineering College, Visakhapatnam · CGPA: 8.02</div>
+      <div class="exp-desc">Pursuing a degree in Artificial Intelligence and Data Science with coursework spanning ML theory, deep learning architectures, data engineering, and intelligent systems design.</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-up">
+    <div class="section-tag">Technical Skills</div>
+    <h2 class="section-title">The stack I build with.</h2>
+  </div>
+  <div class="skills-grid fade-up">
+
+    <div class="skill-group">
+      <div class="skill-group-label">Languages</div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">C</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">ML / AI Frameworks</div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">Scikit-learn</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">TensorFlow / Keras</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">PyTorch</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">FastAPI</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">OpenCV</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Data & Visualization</div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">Pandas / NumPy</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Matplotlib / Seaborn</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Tableau</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">MySQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:2rem" class="fade-up">
+    <div class="section-tag" style="margin-bottom:1.5rem">Certifications</div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon">ML</div>
+        <div>
+          <div class="cert-name">Machine Learning Foundation Certification</div>
+          <div class="cert-issuer">Infosys — Algorithms, Preprocessing, Model Evaluation</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">DS</div>
+        <div>
+          <div class="cert-name">Data Science Professional Certificate</div>
+          <div class="cert-issuer">Coursera — Statistics, ML, Visualization, Python</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-big fade-up">
+    Let's build something<br/><span>intelligent.</span>
+  </div>
+  <p class="contact-sub fade-up">Open to full-time roles, internships, and collaborative AI/ML projects. Currently based in Visakhapatnam, India.</p>
+  <div class="contact-links fade-up">
+    <a class="contact-link" href="mailto:vivektolada@gmail.com">✉ vivektolada@gmail.com</a>
+    <a class="contact-link" href="https://www.linkedin.com/in/vivektolada" target="_blank">↗ LinkedIn</a>
+    <a class="contact-link" href="https://github.com/vivektolada" target="_blank">↗ GitHub</a>
+    <a class="contact-link" href="tel:7995135452">📞 +91 7995135452</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Tolada Venkat Sai Vivek · Built with intent, not a template.</span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'), i*80);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// Cursor glow
+document.addEventListener('mousemove', e => {
+  const x = e.clientX, y = e.clientY;
+  let glow = document.getElementById('cursor-glow');
+  if(!glow){
+    glow = document.createElement('div');
+    glow.id = 'cursor-glow';
+    glow.style.cssText = 'position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,179,0.04) 0%,transparent 70%);pointer-events:none;z-index:0;transition:transform 0.1s;';
+    document.body.appendChild(glow);
+  }
+  glow.style.transform = `translate(${x-150}px,${y-150}px)`;
+});
+</script>
+</body>
+</html>
